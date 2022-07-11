@@ -1,9 +1,16 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import logo from "./logo.svg";
 import "./App.css";
+import { styled } from "./stitches.config";
+
+const MyP = styled("p", {
+  color: "red",
+});
 
 function App(): JSX.Element {
+  const { t } = useTranslation();
   const [count, setCount] = useState(0);
 
   return (
@@ -11,6 +18,7 @@ function App(): JSX.Element {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
+        <MyP>{t("hello")}</MyP>
         <p>
           <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
